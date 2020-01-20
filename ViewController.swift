@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UITableViewController {
 
-    var shoppingList = ["apples", "butter", "chicken"]
+    var shoppingList = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +46,19 @@ class ViewController: UITableViewController {
             textfield = alertTextField
         }
         
+        present(ac, animated: true)
+        
+    }
+    
+    
+    @IBAction func refreshItems(_ sender: Any) {
+        let ac = UIAlertController(title: "Are you sure?", message: nil, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Yes", style: .default) { (action) in
+            self.shoppingList.removeAll()
+            self.tableView.reloadData()
+        })
+        
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(ac, animated: true)
         
     }
