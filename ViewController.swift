@@ -63,6 +63,13 @@ class ViewController: UITableViewController {
         
     }
     
+    
+    @IBAction func shareButtonPressed(_ sender: Any) {
+        let list = shoppingList.joined(separator: "\n")
+        let vc = UIActivityViewController(activityItems: [list], applicationActivities: [])
+        present(vc, animated:true)
+    }
+    
 
 }
 
